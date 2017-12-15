@@ -17,7 +17,7 @@
 
     <ion-title>Escolha o tipo de causa:</ion-title>
     <ion-item>
-      <ion-select [(ngModel)]="causa">
+      <ion-select [(ngModel)]="causa" block>
         <ion-option value="estacionamento">Estacionamento inapropriado</ion-option>
         <ion-option value="sinal">Ultrapassagem do sinaleiro</ion-option>
         <ion-option value="celular">Uso de celular dirigindo</ion-option>
@@ -32,9 +32,9 @@
     <form>
       <ion-item>
           <ion-label color="primary" floating>Descrição</ion-label>
-          <ion-input id='descricao'></ion-input>
+          <ion-input id='descricao' full></ion-input>
       </ion-item>
     </form>
 
-    <button ion-button outline (click)='proximo();'>Próximo</button>
+    <button ion-button outline (click)='proximo();' block>Próximo</button>
 </ion-content>

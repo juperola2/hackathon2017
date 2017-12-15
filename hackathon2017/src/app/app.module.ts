@@ -8,12 +8,14 @@ import { Camera } from '@ionic-native/camera';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { FormularioPage } from '../pages/formulario/formulario';
+import { FormularioSucessoPage } from '../pages/formulario-sucesso/formulario-sucesso';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    FormularioPage
+    FormularioPage,
+    FormularioSucessoPage
   ],
   imports: [
     BrowserModule,
@@ -23,7 +25,8 @@ import { FormularioPage } from '../pages/formulario/formulario';
   entryComponents: [
     MyApp,
     HomePage,
-    FormularioPage
+    FormularioPage,
+    FormularioSucessoPage
   ],
   providers: [
     StatusBar,

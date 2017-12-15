@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { FormularioSucessoPage } from '../formulario-sucesso/formulario-sucesso';
 
 /**
  * Generated class for the FormularioPage page.
@@ -28,8 +29,7 @@ export class FormularioPage {
     console.log('redireciona');
     console.log(document.querySelector('input').value);
     console.log(this.causa);
-
-    //this.navCtrl.push(FormularioPage);
+    this.navCtrl.push(FormularioSucessoPage);
   }
 
 }
