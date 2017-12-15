@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { LoadingUtil } from '../../util/loadingUtil';
+import { FormularioSucessoPage } from '../formulario-sucesso/formulario-sucesso';
 
 @IonicPage()
 @Component({
@@ -29,6 +30,7 @@ export class FormularioPage {
     this.http.post(this.url, this.criarOcorrencia())
     .subscribe(resposta => resposta.json());
     this.navCtrl.pop();
+    this.navCtrl.push(FormularioSucessoPage);
     this.loadingUtil.fecharLoading();
   }
 
