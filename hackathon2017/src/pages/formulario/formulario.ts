@@ -15,6 +15,7 @@ import { FormularioSucessoPage } from '../formulario-sucesso/formulario-sucesso'
   templateUrl: 'formulario.html',
 })
 export class FormularioPage {
+  private foto: string;
 
   public causa: string = 'outro';
 
@@ -22,13 +23,12 @@ export class FormularioPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad FormularioPage');
+    this.foto = this.navParams.get("foto");
   }
 
   public proximo() {
     console.log('redireciona');
     console.log(document.querySelector('input').value);
-    console.log(this.causa);
     this.navCtrl.push(FormularioSucessoPage);
   }
 

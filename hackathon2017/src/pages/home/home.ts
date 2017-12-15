@@ -20,12 +20,12 @@ export class HomePage {
   constructor(
     private navCtrl: NavController,
     private camera: Camera) {
-      this.navCtrl.first();
   }
 
   public obterFoto() {
     this.camera.getPicture(this.opcoesCamera).then((imageData) => {
       this.foto = 'data:image/jpeg;base64,' + imageData;
+      this.navCtrl.push(FormularioPage, {foto: this.foto});
     }, (err) => {
       console.log(err);
     });
