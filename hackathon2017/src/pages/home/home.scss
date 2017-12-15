@@ -1,3 +1,43 @@
-page-home {
+  .pagina-inicial {
+  background: $light;
+  font-family: roboto;
+  overflow: hidden;
+  font-weight: 300;
+  .container-botao { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .botao-pagina-inicial {
+      width: 240px;
+      text-align: center;
+      height: 240px;
+      border-radius: 50%;
+      font-size: 24px;
+      background: $primary;
+      color: $dark;
+      font-weight: 300;
+      text-transform: uppercase;
+      box-shadow: none;
+      &:hover {
+        background: lighten($primary, 5%);
+      }
+    }
+  }
 
+  .lista-de-registros {
+    border: 0;
+    outline: 0;
+    .listra-de-registros__registro {
+      border: 0 !important;
+      background: transparent;
+    }
+  }
+
+  .titulo-secundario {
+    font-weight: 400;
+    text-align: center;
+    font-size: 14px;
+    padding-top: 16px; 
+  }
 }
