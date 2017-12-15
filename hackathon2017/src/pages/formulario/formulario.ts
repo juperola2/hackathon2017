@@ -22,19 +22,16 @@ export class FormularioPage {
     public http: Http,
     public loadingUtil: LoadingUtil,
     private geolocalizacao: GeolocalizacaoServico) {
-      let locais = this.geolocalizacao.obterLocais();
-      this.localDaFoto = locais[1];
-      console.log(locais[1]);
     }
     
   ionViewDidLoad() {
     this.foto = this.navParams.get("foto");
+    this.localDaFoto = this.navParams.get("localSelecionado");
   }
 
   public adicionarOcorrencia(){
     this.loadingUtil.ativarLoading("Adicionando ocorrencia");
-    this.http.post(this.url, this.criarOcorrencia())
-    .subscribe(resposta => resposta.json());
+    this.http.post(this.url, this.criarOcorrencia()).subscribe(resposta => resposta.json());
     this.navCtrl.pop();
     this.navCtrl.push(FormularioSucessoPage);
     this.loadingUtil.fecharLoading();

@@ -10,6 +10,7 @@ import { GeolocalizacaoServico } from '../../util/geolocalizacaoServico';
 })
 export class HomePage {
   private foto: string;
+  private localAtual: any;
 
   opcoesCamera: CameraOptions = {
     quality: 60,
@@ -31,13 +32,20 @@ export class HomePage {
   public obterFoto() {
     this.camera.getPicture(this.opcoesCamera).then((imageData) => {
       this.foto = 'data:image/jpeg;base64,' + imageData;
-      this.navCtrl.push(FormularioPage, {foto: this.foto});
+      this.navCtrl.push(FormularioPage, {foto: this.foto, localSelecionado: this.localAtual});
     }, (err) => {
       console.log(err);
     });
   }
 
   public irParaFormulario() {
-    this.navCtrl.push(FormularioPage);
+    let self = this;
+    let salvarLocais = function(locais) {
+      self.localAtual = locais[1];
+      console.log(self.localAtual);
+      console.log(locais.results);
+      self.navCtrl.push(FormularioPage, {foto: self.foto, localSelecionado: self.localAtual});
+    }
+    this.geolocalizacao.obterLocais(salvarLocais);
   }
 }

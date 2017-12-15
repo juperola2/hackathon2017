@@ -14,7 +14,7 @@ export class GeolocalizacaoServico {
     locais = [];
 
     opcoes: {} = {
-        timeout: 8000,
+        timeout: 9000,
         enableHighAccuaracy: true
     };
 
@@ -42,23 +42,13 @@ export class GeolocalizacaoServico {
         });
     }
     
-    obterLocais() {
-        this.loadingUtil.ativarLoading("carregando");
+    obterLocais(callback: any) {
         this.http
-        .get(this.urlGoogleApi + "&location=" + GeolocalizacaoServico.latitude + "," + GeolocalizacaoServico.longitude)
-        .map(response => response.json())
-        .subscribe(sucesso => {
-            this.locais = sucesso.results;
-            this.loadingUtil.fecharLoading();
-        });
-
-        setTimeout(()=>{
-            this;
-          }, 2000);
-
-        console.log(this.locais);
-        console.log("----");
-        return this.locais;
+            .get(this.urlGoogleApi + "&location=" + GeolocalizacaoServico.latitude + "," + GeolocalizacaoServico.longitude)
+            .map(response => response.json())
+            .subscribe(response => {
+                callback(response.results);
+            });
     }
 
     obterLocaisParaAvaliacao(){
