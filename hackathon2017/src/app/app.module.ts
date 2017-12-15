@@ -12,16 +12,7 @@ import { FormularioPage } from '../pages/formulario/formulario';
 import { LoadingUtil } from '../../src/util/loadingUtil';
 import { FormularioSucessoPage } from '../pages/formulario-sucesso/formulario-sucesso';
 import { GeolocalizacaoServico } from '../../src/util/geolocalizacaoServico';
-import {
-  GoogleMaps,
-  GoogleMap,
-  GoogleMapsEvent,
-  GoogleMapOptions,
-  CameraPosition,
-  MarkerOptions,
-  Marker
- } from '@ionic-native/google-maps';
- import { Geolocation } from '@ionic-native/geolocation';
+import { Geolocation } from '@ionic-native/geolocation';
 
 @NgModule({
   declarations: [
@@ -45,7 +36,6 @@ import {
   providers: [
     StatusBar,
     Camera,
-    GoogleMaps,
     Geolocation,
     SplashScreen,
     LoadingUtil,

@@ -7,18 +7,17 @@
 </ion-header>
 
 
-<ion-content padding>
-  <ion-card>
-
-    <div class="container-foto">
-      <img class="foto" [src]="foto" alt="Foto Transite" />
-    </div>
-    <ion-item>
-      <ion-icon name="pin" item-start large></ion-icon>
+<ion-content class="pagina-formulario" padding>
+  <div class="container-foto">
+    <img class="foto" [src]="foto" alt="Foto Transite" />
+  </div>
+  <div class="localizacao-container">
+    <ion-icon class="icone-localizacao" name="pin" item-start large></ion-icon>
+    <div class="formulario-localizacao">
       <h2 *ngIf="localDaFoto">{{localDaFoto.name}}</h2>
       <p *ngIf="localDaFoto">{{localDaFoto.vicinity}}</p>
-    </ion-item>
-  </ion-card>
+    </div>
+  </div>
   <h3 class="titulo-secundario">Escolha o tipo de causa</h3>
   <ion-item class="ocorrencia-form">
     <ion-select [(ngModel)]="tipoDeOcorrencia">
