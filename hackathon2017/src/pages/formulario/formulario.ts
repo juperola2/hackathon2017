@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the FormularioPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
+import { LoadingUtil } from '../../util/loadingUtil';
+import { FormularioSucessoPage } from '../formulario-sucesso/formulario-sucesso';
 
 @IonicPage()
 @Component({
@@ -14,22 +11,40 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'formulario.html',
 })
 export class FormularioPage {
+  private foto: string;
+  private url = "http://10.1.1.20:9000/ocorrencia";
+  public tipoDeOcorrencia: string = 'outro';
 
-  public causa: string = 'outro';
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public http: Http,
+    public loadingUtil: LoadingUtil) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad FormularioPage');
+    this.foto = this.navParams.get("foto");
   }
 
-  public proximo() {
-    console.log('redireciona');
-    console.log(document.querySelector('input').value);
-    console.log(this.causa);
+  public adicionarOcorrencia(){
+    this.loadingUtil.ativarLoading("Adicionando ocorrencia");
+    this.http.post(this.url, this.criarOcorrencia())
+    .subscribe(resposta => resposta.json());
+    this.navCtrl.pop();
+    this.navCtrl.push(FormularioSucessoPage);
+    this.loadingUtil.fecharLoading();
+  }
 
-    //this.navCtrl.push(FormularioPage);
+  private criarOcorrencia(){
+    return {
+    "imagem":this.foto,
+    "tipoDaOcorrencia": this.tipoDeOcorrencia,
+    "horaDoRegistro": "2016-01-25T21:34:55",
+    "localizacao":{
+        "latitude": 12.1,
+        "longitude": 32.23
+      },
+    "nomeDoUsuario": "FULANO"
+    }
   }
 
 }

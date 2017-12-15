@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Custom Markers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+        #map {
+            height: 100%;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    var map;
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: {lat: -20.482391, lng: -54.601009},
+            mapTypeId: 'roadmap'
+        });
+
+        var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+        var icons = {
+            ESTACIONAMENTO_INDEVIDO: {
+                icon: iconBase + 'parking_lot_maps.png'
+            },
+            BURACO_NA_VIA: {
+                icon: iconBase + 'library_maps.png'
+            }
+        };
+
+        $.get('/ocorrencia').then((ocorrencias) => {
+            var features = ocorrencias.map((ocorrencia) => {
+                return {
+                    position: new google.maps.LatLng(ocorrencia.localizacao.latitude, ocorrencia.localizacao.longitude),
+                    type: ocorrencia.tipoDaOcorrencia
+                }
+            });
+
+            features.forEach(function (feature) {
+                new google.maps.Marker({
+                    position: feature.position,
+                    icon: icons[feature.type].icon,
+                    map: map
+                });
+            });
+        });
+
+    }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRUPUBNDHSIgcXpkJPyFda1s_Gwjk0rU8&callback=initMap">
+</script>
+</body>
+</html>
