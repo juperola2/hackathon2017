@@ -17,7 +17,7 @@
     <img [src]="foto" />
     <ion-title>Escolha o tipo de causa:</ion-title>
     <ion-item>
-      <ion-select [(ngModel)]="causa">
+      <ion-select [(ngModel)]="tipoDeOcorrencia">
         <ion-option value="estacionamento">Estacionamento inapropriado</ion-option>
         <ion-option value="sinal">Ultrapassagem do sinaleiro</ion-option>
         <ion-option value="celular">Uso de celular dirigindo</ion-option>
@@ -36,5 +36,5 @@
       </ion-item>
     </form>
 
-    <button ion-button outline (click)='proximo();'>Próximo</button>
+    <button ion-button outline (click)='adicionarOcorrencia();'>Próximo</button>
 </ion-content>
