@@ -11,13 +11,15 @@ import { HomePage } from '../pages/home/home';
 import { FormularioPage } from '../pages/formulario/formulario';
 import { LoadingUtil } from '../../src/util/loadingUtil';
 import { FormularioSucessoPage } from '../pages/formulario-sucesso/formulario-sucesso';
+import { DetalhesDaOcorrenciaPage } from '../pages/detalhes-da-ocorrencia/detalhes-da-ocorrencia';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     FormularioPage,
-    FormularioSucessoPage
+    FormularioSucessoPage,
+    DetalhesDaOcorrenciaPage
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,8 @@ import { FormularioSucessoPage } from '../pages/formulario-sucesso/formulario-su
     MyApp,
     HomePage,
     FormularioPage,
-    FormularioSucessoPage
+    FormularioSucessoPage,
+    DetalhesDaOcorrenciaPage
   ],
   providers: [
     StatusBar,
