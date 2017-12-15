@@ -6,38 +6,26 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <button ion-button (click)="obterFoto()" outline>Registrar Ocorrência</button>
-  <button ion-button (click)="irParaFormulario()" outline>Formulário</button>
 
-  <ion-list>
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="http://icons.iconarchive.com/icons/custom-icon-design/pretty-office-11/256/add-item-icon.png">
-      </ion-avatar>
-      <h2>Cher</h2>
-      <p>Ugh. As if.</p>
+<ion-content class="pagina-inicial" padding>
+  <button ion-button (click)="irParaFormulario()" outline>Formulário</button>
+  
+  <div class="container-botao">
+    <button (click)="obterFoto()" class="botao-pagina-inicial" ion-button>Registrar
+      <br>Ocorrência</button>
+  </div>
+  <h3 class="titulo-secundario">
+    Últimos registros
+  </h3>
+  <ion-list class="lista-de-registros">
+    <ion-item class="listra-de-registros__registro">
+      <ion-icon name="ios-warning-outline" color="danger" item-start></ion-icon>
+      Estacionamento Indevido
+
     </ion-item>
-    <ion-item>
-      <ion-avatar item-start>
-          <img src="http://icons.iconarchive.com/icons/custom-icon-design/pretty-office-11/256/add-item-icon.png">
-      </ion-avatar>
-      <h2>Cher</h2>
-      <p>Ugh. As if.</p>
-    </ion-item>
-    <ion-item>
-      <ion-avatar item-start>
-          <img src="http://icons.iconarchive.com/icons/custom-icon-design/pretty-office-11/256/add-item-icon.png">
-      </ion-avatar>
-      <h2>Cher</h2>
-      <p>Ugh. As if.</p>
-    </ion-item>
-    <ion-item>
-      <ion-avatar item-start>
-          <img src="http://icons.iconarchive.com/icons/custom-icon-design/pretty-office-11/256/add-item-icon.png">
-      </ion-avatar>
-      <h2>Cher</h2>
-      <p>Ugh. As if.</p>
+    <ion-item class="listra-de-registros__registro">
+      <ion-icon name="ios-checkmark-circle-outline" color="sucess" item-start></ion-icon>
+      Buraco na via
     </ion-item>
   </ion-list>
 </ion-content>

@@ -15,7 +15,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class FormularioPage {
 
-  public causa: string;
+  public causa: string = 'outro';
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
