@@ -11,6 +11,7 @@ import { HomePage } from '../pages/home/home';
 import { FormularioPage } from '../pages/formulario/formulario';
 import { LoadingUtil } from '../../src/util/loadingUtil';
 import { FormularioSucessoPage } from '../pages/formulario-sucesso/formulario-sucesso';
+import { DetalhesDaOcorrenciaPage } from '../pages/detalhes-da-ocorrencia/detalhes-da-ocorrencia';
 import { GeolocalizacaoServico } from '../../src/util/geolocalizacaoServico';
 import { Geolocation } from '@ionic-native/geolocation';
 
@@ -19,7 +20,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     MyApp,
     HomePage,
     FormularioPage,
-    FormularioSucessoPage
+    FormularioSucessoPage,
+    DetalhesDaOcorrenciaPage
   ],
   imports: [
     BrowserModule,
@@ -31,7 +33,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     MyApp,
     HomePage,
     FormularioPage,
-    FormularioSucessoPage
+    FormularioSucessoPage,
+    DetalhesDaOcorrenciaPage
   ],
   providers: [
     StatusBar,
