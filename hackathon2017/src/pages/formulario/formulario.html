@@ -1,3 +1,9 @@
+<!--
+  Generated template for the FormularioPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
 <ion-header>
 
   <ion-navbar>
@@ -7,32 +13,36 @@
 </ion-header>
 
 
-<ion-content padding>
-    <ion-card>
-        
-          <img [src]="foto" />
-          <ion-item >
-              <ion-icon name="pin" item-start large></ion-icon>
-              <h2 *ngIf="localDaFoto">{{localDaFoto.name}}</h2>
-              <p *ngIf="localDaFoto">{{localDaFoto.vicinity}}</p>
-            </ion-item>
-    </ion-card>
-  <ion-item>
+<ion-content class="pagina-formulario" padding>
+  <div class="container-foto">
+    <img class="foto" [src]="foto" alt="Foto Transite" />
+  </div>
+  <div class="localizacao-container">
+    <ion-icon class="icone-localizacao" name="pin" item-start large></ion-icon>
+    <div class="formulario-localizacao">
+      <h2 *ngIf="localDaFoto">{{localDaFoto.name}}</h2>
+      <p *ngIf="localDaFoto">{{localDaFoto.vicinity}}</p>
+    </div>
+  </div>
+  <h3 class="titulo-secundario">Escolha o tipo de causa</h3>
+  <ion-item class="ocorrencia-form">
     <ion-select [(ngModel)]="tipoDeOcorrencia">
       <ion-option value="estacionamento">Estacionamento inapropriado</ion-option>
       <ion-option value="sinal">Ultrapassagem do sinaleiro</ion-option>
       <ion-option value="celular">Uso de celular dirigindo</ion-option>
       <ion-option value="acidente">Ocorrência de acidente</ion-option>
       <ion-option value="outro">Outro</ion-option>
-
     </ion-select>
   </ion-item>
-    <ion-title>Informe a descrição:</ion-title>
-    <form>
-      <ion-item>
-          <ion-label color="primary" floating>Descrição</ion-label>
-          <ion-input id='descricao' full></ion-input>
-      </ion-item>
-    </form>
-    <button ion-button outline block (click)='adicionarOcorrencia();'>Próximo</button>
+
+  <h3 class="titulo-secundario">Informe a descrição</h3>
+
+  <form>
+    <ion-item>
+      <ion-label stacked>Descrição</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+  </form>
+
+  <button ion-button outline block (click)='adicionarOcorrencia();'>Próximo</button>
 </ion-content>

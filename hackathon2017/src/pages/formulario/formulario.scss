@@ -1,3 +1,70 @@
 page-formulario {
+  .pagina-formulario{
+    overflow: hidden;
+    background: $light;
+    .container-foto {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: auto;
+      margin-bottom: 24px;
+      background: white;
+      .foto {
+        max-height: 200px;
+        min-height: auto;
+        min-width: auto;
+        max-width: 100%
+      }
+    }
+    
+    .localizacao-container {
+      display: flex;
+      align-items: center;
+      height: 100px;
+      .icone-localizacao{
+        font-size: 40px;
+        color: $secondary;
+        margin-left: 14px;
+      }
+      .formulario-localizacao {
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        margin-left: 20px;
+        h2 {
+          padding: 0;
+          margin: 0;
+          font-size: 20px;
+        }
+        p {
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+          padding: 0;
+          margin: 0;
+          font-size: 16px;
+          
+        }
+      }
+    }
 
+    .ocorrencia-form {
+      border-radius: 5px !important;
+      width: 100%;
+    }
+
+    .titulo-secundario {
+      font-weight: 400;
+      text-align: left;
+      font-size: 14px;
+      padding-top: 16px; 
+    }
+
+    ion-select {
+      width: 100%;;
+    }
+  }
 }
+
