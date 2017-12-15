@@ -14,18 +14,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'formulario.html',
 })
 export class FormularioPage {
+  private foto: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad FormularioPage');
+    this.foto = this.navParams.get("foto");
   }
 
   public proximo() {
     console.log('redireciona');
     console.log(document.querySelector('input').value);
-    //this.navCtrl.push(FormularioPage);
   }
 
 }
