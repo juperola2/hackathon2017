@@ -5,6 +5,7 @@ import { FormularioPage } from '../formulario/formulario';
 import {DetalhesDaOcorrenciaPage} from '../detalhes-da-ocorrencia/detalhes-da-ocorrencia';
 import { Http } from '@angular/http';
 import { LoadingUtil } from '../../util/loadingUtil';
+import { GeolocalizacaoServico } from '../../util/geolocalizacaoServico';
 
 @Component({
   selector: 'page-home',
@@ -73,11 +74,16 @@ export class HomePage {
     private navCtrl: NavController,
     private camera: Camera,
     public http: Http,
+    private geolocalizacao: GeolocalizacaoServico,
     public loadingUtil: LoadingUtil) {
   }
 
   ngOnInit() {
     this.carregarOcorrencias();
+  }
+
+  ionViewDidLoad(){
+    this.geolocalizacao.ativarEspiao();
   }
 
   public obterFoto() {
@@ -159,3 +165,4 @@ export class HomePage {
     this.navCtrl.push(DetalhesDaOcorrenciaPage, {ocorrencia: dados});
   }
 }
+

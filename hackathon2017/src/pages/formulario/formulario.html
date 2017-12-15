@@ -12,22 +12,29 @@
 
 </ion-header>
 
-
 <ion-content padding>
-    <img [src]="foto" />
-    <ion-title>Escolha o tipo de causa:</ion-title>
-    <ion-item>
-      <ion-select [(ngModel)]="tipoDeOcorrencia">
-        <ion-option value="estacionamento">Estacionamento inapropriado</ion-option>
-        <ion-option value="sinal">Ultrapassagem do sinaleiro</ion-option>
-        <ion-option value="celular">Uso de celular dirigindo</ion-option>
-        <ion-option value="acidente">Ocorrência de acidente</ion-option>
-        <ion-option value="outro">Outro</ion-option>
+   
+    <ion-card>
+        
+        <img [src]="foto" />
+        <ion-item >
+            <ion-icon name="pin" item-start large></ion-icon>
+            <h2 *ngIf="localDaFoto">{{localDaFoto.name}}</h2>
+            <p *ngIf="localDaFoto">{{localDaFoto.vicinity}}</p>
+          </ion-item>
+  </ion-card>
+  
+<ion-title>Escolha o tipo de causa:</ion-title>
+<ion-item>
+  <ion-select [(ngModel)]="tipoDeOcorrencia">
+    <ion-option value="estacionamento">Estacionamento inapropriado</ion-option>
+    <ion-option value="sinal">Ultrapassagem do sinaleiro</ion-option>
+    <ion-option value="celular">Uso de celular dirigindo</ion-option>
+    <ion-option value="acidente">Ocorrência de acidente</ion-option>
+    <ion-option value="outro">Outro</ion-option>
 
-      </ion-select>
-    </ion-item>
-    
-
+  </ion-select>
+</ion-item>
     <ion-title>Informe a descrição:</ion-title>
     <form>
       <ion-item>

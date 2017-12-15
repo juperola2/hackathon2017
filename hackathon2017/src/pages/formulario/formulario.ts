@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { LoadingUtil } from '../../util/loadingUtil';
+import { GeolocalizacaoServico } from '../../util/geolocalizacaoServico';
 import { FormularioSucessoPage } from '../formulario-sucesso/formulario-sucesso';
 
 @IonicPage()
@@ -13,14 +14,19 @@ import { FormularioSucessoPage } from '../formulario-sucesso/formulario-sucesso'
 export class FormularioPage {
   private foto: string;
   private url = "http://10.1.1.20:9000/ocorrencia";
-  public tipoDeOcorrencia: string = 'outro';
+  private tipoDeOcorrencia: string = 'outro';
+  private localDaFoto: any;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public http: Http,
-    public loadingUtil: LoadingUtil) {
-  }
-
+    public loadingUtil: LoadingUtil,
+    private geolocalizacao: GeolocalizacaoServico) {
+      let locais = this.geolocalizacao.obterLocais();
+      this.localDaFoto = locais[1];
+      console.log(locais[1]);
+    }
+    
   ionViewDidLoad() {
     this.foto = this.navParams.get("foto");
   }
@@ -38,13 +44,12 @@ export class FormularioPage {
     return {
     "imagem":this.foto,
     "tipoDaOcorrencia": this.tipoDeOcorrencia,
-    "horaDoRegistro": "2016-01-25T21:34:55",
+    "horaDoRegistro": Date.now(),
     "localizacao":{
-        "latitude": 12.1,
-        "longitude": 32.23
+        "latitude": GeolocalizacaoServico.latitude,
+        "longitude": GeolocalizacaoServico.longitude
       },
     "nomeDoUsuario": "FULANO"
     }
   }
-
 }
