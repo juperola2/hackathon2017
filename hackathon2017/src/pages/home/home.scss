@@ -1,4 +1,22 @@
-  .pagina-inicial {
+.cabecalho-principal {
+  height: auto;
+  .navegacao-principal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: $primary;
+    box-shadow: none;
+    height: auto;
+    .logo-principal {
+      height: 80px;
+      margin: 0 auto;
+      vertical-align: center;
+    }
+  }
+}  
+  
+.pagina-inicial {
   background: $light;
   font-family: roboto;
   overflow: hidden;
@@ -15,12 +33,18 @@
       border-radius: 50%;
       font-size: 24px;
       background: $primary;
-      color: $dark;
-      font-weight: 300;
-      text-transform: uppercase;
+      color: $light;
+      font-weight: 400;
+      text-transform: capitalize;
       box-shadow: none;
       &:hover {
         background: lighten($primary, 5%);
+      }
+      .icone-botao {
+        position: absolute;
+        top: 32px;
+        font-size: 60px;
+        color: $light;
       }
     }
   }

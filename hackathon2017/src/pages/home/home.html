@@ -1,20 +1,20 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Hackathon 2017
-    </ion-title>
+<ion-header class="cabecalho-principal">
+  <ion-navbar class="navegacao-principal">
+    <img class="logo-principal" src="./assets/imgs/logo-transite.png" alt="Transite">
   </ion-navbar>
 </ion-header>
 
 
 <ion-content class="pagina-inicial" padding>
-  <button ion-button (click)="irParaFormulario()" outline>Formulário</button>
+
   
   <div class="container-botao">
-    <button (click)="obterFoto()" class="botao-pagina-inicial" ion-button>Registrar
+    <button (click)="obterFoto()" class="botao-pagina-inicial" ion-button>
+      <ion-icon class="icone-botao" name="ios-camera-outline" item-start></ion-icon>
+      Registrar
       <br>Ocorrência</button>
-  </div>
-  <h3 class="titulo-secundario">
+    </div>
+    <h3 class="titulo-secundario">
     Últimos registros
   </h3>
   <ion-list class="lista-de-registros">
@@ -28,4 +28,7 @@
       Buraco na via
     </ion-item>
   </ion-list>
+
+  <button ion-button (click)="irParaFormulario()" outline>Formulário</button>
+  
 </ion-content>
