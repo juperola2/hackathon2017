@@ -16,11 +16,16 @@
 <ion-content padding>
     <img [src]="foto" />
     <ion-title>Escolha o tipo de causa:</ion-title>
-    <button ion-button outline (click)='proximo();'>Estacionamento em local inapropriado</button>
-    <button ion-button outline (click)='proximo();'>Ultrapassagem do sinaleiro</button>
-    <button ion-button outline (click)='proximo();'>Uso de celular durante direção</button>
-    <button ion-button outline (click)='proximo();'>Ocorrência de acidente</button>
-    <button ion-button outline (click)='proximo();'>Outro</button>
+    <ion-item>
+      <ion-select [(ngModel)]="causa">
+        <ion-option value="estacionamento">Estacionamento inapropriado</ion-option>
+        <ion-option value="sinal">Ultrapassagem do sinaleiro</ion-option>
+        <ion-option value="celular">Uso de celular dirigindo</ion-option>
+        <ion-option value="acidente">Ocorrência de acidente</ion-option>
+        <ion-option value="outro">Outro</ion-option>
+
+      </ion-select>
+    </ion-item>
     
 
     <ion-title>Informe a descrição:</ion-title>
@@ -31,5 +36,5 @@
       </ion-item>
     </form>
 
-    <button ion-button outline (click)='proximo();'></button>
+    <button ion-button outline (click)='proximo();'>Próximo</button>
 </ion-content>
