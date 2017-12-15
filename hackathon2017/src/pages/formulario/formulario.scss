@@ -1,3 +1,38 @@
 page-formulario {
+  .pagina-formulario{
+    overflow: hidden;
+    background: $light;
+    .container-foto {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: auto;
+      margin-bottom: 24px;
+      background: white;
+      .foto {
+        max-height: 200px;
+        min-height: auto;
+        min-width: auto;
+        max-width: 100%
+      }
+    }
 
+    .ocorrencia-form {
+      border-radius: 5px !important;
+      width: 100%;
+    }
+
+    .titulo-secundario {
+      font-weight: 400;
+      text-align: left;
+      font-size: 14px;
+      padding-top: 16px; 
+    }
+
+    ion-select {
+      width: 100%;;
+    }
+  }
 }
+

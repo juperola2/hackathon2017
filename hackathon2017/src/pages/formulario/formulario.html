@@ -13,26 +13,27 @@
 </ion-header>
 
 
-<ion-content padding>
-  <img [src]="foto" />
-  <ion-title>Escolha o tipo de causa:</ion-title>
-  <ion-item>
+<ion-content class="pagina-formulario" padding>
+  <div class="container-foto">
+    <img class="foto" [src]="foto" alt="Foto Transite" />
+  </div>
+  <h3 class="titulo-secundario">Escolha o tipo de causa</h3>
+  <ion-item class="ocorrencia-form">
     <ion-select [(ngModel)]="tipoDeOcorrencia">
       <ion-option value="estacionamento">Estacionamento inapropriado</ion-option>
       <ion-option value="sinal">Ultrapassagem do sinaleiro</ion-option>
       <ion-option value="celular">Uso de celular dirigindo</ion-option>
       <ion-option value="acidente">Ocorrência de acidente</ion-option>
       <ion-option value="outro">Outro</ion-option>
-
     </ion-select>
   </ion-item>
 
+  <h3 class="titulo-secundario">Informe a descrição</h3>
 
-  <ion-title>Informe a descrição:</ion-title>
   <form>
     <ion-item>
-      <ion-label color="primary" floating>Descrição</ion-label>
-      <ion-input id='descricao' full></ion-input>
+      <ion-label stacked>Descrição</ion-label>
+      <ion-input type="text"></ion-input>
     </ion-item>
   </form>
 
