@@ -12,6 +12,7 @@ PlayKeys.externalizeResources := false
 libraryDependencies ++= Seq(
   guice,
   javaJpa,
+  filters,
   "org.hibernate" % "hibernate-entitymanager" % "5.1.0.Final",
   "org.postgresql" % "postgresql" % "42.1.4",
   "org.hibernate" % "hibernate-java8" % "5.1.0.Final"
