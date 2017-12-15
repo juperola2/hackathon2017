@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { FormularioPage } from '../formulario/formulario';
 
 @Component({
   selector: 'page-home',
@@ -28,5 +29,9 @@ export class HomePage {
     }, (err) => {
       console.log(err);
     });
+  }
+
+  public irParaFormulario() {
+    this.navCtrl.push(FormularioPage);
   }
 }
