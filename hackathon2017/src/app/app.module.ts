@@ -4,10 +4,12 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Camera } from '@ionic-native/camera';
+import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { FormularioPage } from '../pages/formulario/formulario';
+import { LoadingUtil } from '../../src/util/loadingUtil';
 import { FormularioSucessoPage } from '../pages/formulario-sucesso/formulario-sucesso';
 
 @NgModule({
@@ -19,6 +21,7 @@ import { FormularioSucessoPage } from '../pages/formulario-sucesso/formulario-su
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -32,6 +35,7 @@ import { FormularioSucessoPage } from '../pages/formulario-sucesso/formulario-su
     StatusBar,
     Camera,
     SplashScreen,
+    LoadingUtil,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
