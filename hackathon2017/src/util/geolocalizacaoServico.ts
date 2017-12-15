@@ -44,14 +44,21 @@ export class GeolocalizacaoServico {
     
     obterLocais() {
         this.loadingUtil.ativarLoading("carregando");
-        return this.http
+        this.http
         .get(this.urlGoogleApi + "&location=" + GeolocalizacaoServico.latitude + "," + GeolocalizacaoServico.longitude)
         .map(response => response.json())
         .subscribe(sucesso => {
-            console.log(sucesso.results);
+            this.locais = sucesso.results;
             this.loadingUtil.fecharLoading();
-            return sucesso.results;
         });
+
+        setTimeout(()=>{
+            this;
+          }, 2000);
+
+        console.log(this.locais);
+        console.log("----");
+        return this.locais;
     }
 
     obterLocaisParaAvaliacao(){

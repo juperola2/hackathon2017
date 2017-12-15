@@ -11,15 +11,10 @@
     <ion-card>
         
           <img [src]="foto" />
-          <ion-fab right top>
-            <button ion-fab>
-              <ion-icon name="pin"></ion-icon>
-            </button>
-          </ion-fab>
-          <ion-item *ngIf="localDaFoto">
-              <ion-icon name="football" item-start large></ion-icon>
-              <h2>{{localDaFoto.name}}</h2>
-              <p>{{localDaFoto.vicinity}}</p>
+          <ion-item >
+              <ion-icon name="pin" item-start large></ion-icon>
+              <h2 *ngIf="localDaFoto">{{localDaFoto.name}}</h2>
+              <p *ngIf="localDaFoto">{{localDaFoto.vicinity}}</p>
             </ion-item>
     </ion-card>
   <ion-item>
@@ -39,6 +34,5 @@
           <ion-input id='descricao' full></ion-input>
       </ion-item>
     </form>
-    <div id="map_canvas"></div> 
     <button ion-button outline block (click)='adicionarOcorrencia();'>Próximo</button>
 </ion-content>
