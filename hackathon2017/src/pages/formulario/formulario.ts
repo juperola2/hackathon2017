@@ -3,7 +3,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { LoadingUtil } from '../../util/loadingUtil';
+import { GeolocalizacaoServico } from '../../util/geolocalizacaoServico';
 import { FormularioSucessoPage } from '../formulario-sucesso/formulario-sucesso';
+import {
+  GoogleMaps,
+  GoogleMap,
+  GoogleMapsEvent,
+  GoogleMapOptions,
+  CameraPosition,
+  MarkerOptions,
+  Marker
+ } from '@ionic-native/google-maps';
 
 @IonicPage()
 @Component({
@@ -13,16 +23,22 @@ import { FormularioSucessoPage } from '../formulario-sucesso/formulario-sucesso'
 export class FormularioPage {
   private foto: string;
   private url = "http://10.1.1.20:9000/ocorrencia";
-  public tipoDeOcorrencia: string = 'outro';
+  private tipoDeOcorrencia: string = 'outro';
+  private map: GoogleMap;
+  private localDaFoto: any;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public http: Http,
-    public loadingUtil: LoadingUtil) {
-  }
-
+    public loadingUtil: LoadingUtil,
+    private googleMaps: GoogleMaps,
+    private geolocalizacao: GeolocalizacaoServico) {
+    }
+    
   ionViewDidLoad() {
+    this.localDaFoto = this.geolocalizacao.obterLocais()[1];
     this.foto = this.navParams.get("foto");
+    this.loadMap();
   }
 
   public adicionarOcorrencia(){
@@ -38,13 +54,52 @@ export class FormularioPage {
     return {
     "imagem":this.foto,
     "tipoDaOcorrencia": this.tipoDeOcorrencia,
-    "horaDoRegistro": "2016-01-25T21:34:55",
+    "horaDoRegistro": Date.now(),
     "localizacao":{
-        "latitude": 12.1,
-        "longitude": 32.23
+        "latitude": GeolocalizacaoServico.latitude,
+        "longitude": GeolocalizacaoServico.longitude
       },
     "nomeDoUsuario": "FULANO"
     }
   }
 
+  loadMap() {
+    
+        let mapOptions: GoogleMapOptions = {
+          camera: {
+            target: {
+              lat: 43.0741904,
+              lng: -89.3809802
+            },
+            zoom: 18,
+            tilt: 30
+          }
+        };
+    
+        this.map = GoogleMaps.create('map_canvas', mapOptions);
+    
+        // Wait the MAP_READY before using any methods.
+        this.map.one(GoogleMapsEvent.MAP_READY)
+          .then(() => {
+            console.log('Map is ready!');
+    
+            // Now you can use all methods safely.
+            this.map.addMarker({
+                title: 'Ionic',
+                icon: 'blue',
+                animation: 'DROP',
+                position: {
+                  lat: 43.0741904,
+                  lng: -89.3809802
+                }
+              })
+              .then(marker => {
+                marker.on(GoogleMapsEvent.MARKER_CLICK)
+                  .subscribe(() => {
+                    alert('clicked');
+                  });
+              });
+    
+          });
+      }
 }

@@ -14,7 +14,21 @@
 
 
 <ion-content padding>
-    <img [src]="foto" />
+    <ion-card>
+        
+          <img [src]="foto" />
+          <ion-fab right top>
+            <button ion-fab>
+              <ion-icon name="pin"></ion-icon>
+            </button>
+          </ion-fab>
+          <ion-item *ngIf="localDaFoto">
+              <ion-icon name="football" item-start large></ion-icon>
+              <h2>{{localDaFoto.name}}</h2>
+              <p>{{localDaFoto.vicinity}}</p>
+            </ion-item>
+    </ion-card>
+    <span>{{localDaFoto}}</span>
     <ion-title>Escolha o tipo de causa:</ion-title>
     <ion-item>
       <ion-select [(ngModel)]="tipoDeOcorrencia">
@@ -35,6 +49,6 @@
           <ion-input id='descricao' full></ion-input>
       </ion-item>
     </form>
-
+    <div id="map_canvas"></div> 
     <button ion-button outline block (click)='adicionarOcorrencia();'>Próximo</button>
 </ion-content>

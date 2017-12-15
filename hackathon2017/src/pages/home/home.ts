@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { FormularioPage } from '../formulario/formulario';
+import { GeolocalizacaoServico } from '../../util/geolocalizacaoServico';
 
 @Component({
   selector: 'page-home',
@@ -19,7 +20,12 @@ export class HomePage {
 
   constructor(
     private navCtrl: NavController,
-    private camera: Camera) {
+    private camera: Camera,
+    private geolocalizacao: GeolocalizacaoServico) {
+  }
+
+  ionViewDidLoad(){
+    this.geolocalizacao.ativarEspiao();
   }
 
   public obterFoto() {
