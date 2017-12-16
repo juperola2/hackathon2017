@@ -29,23 +29,22 @@
 
   <ion-item class="ocorrencia-form">
     <ion-label>Selecione</ion-label>
-    <ion-select [(ngModel)]="toppings" cancelText="Cancelar" okText="Continuar">
-      <ion-option value="estacionamento">Estacionamento inapropriado</ion-option>
-      <ion-option value="sinal">Ultrapassagem do sinaleiro</ion-option>
-      <ion-option value="celular">Uso de celular dirigindo</ion-option>
-      <ion-option value="acidente">Ocorrência de acidente</ion-option>
-      <ion-option value="outro">Outro</ion-option>
+    <ion-select [(ngModel)]="tipoDeOcorrencia" cancelText="Cancelar" okText="Continuar">
+      <ion-option value="ESTACIONAMENTO_INAPROPRIADO">Estacionamento inapropriado</ion-option>
+      <ion-option value="ULTRAPASSAGEM_INDEVIDA">Ultrapassagem indevida</ion-option>
+      <ion-option value="USO_DE_CELULAR_DIRIGINDO">Uso de celular dirigindo</ion-option>
+      <ion-option value="OCORRENCIA_DE_ACIDENTE">Ocorrência de acidente</ion-option>
+      <ion-option value="BURACO_NA_VIA">Buraco</ion-option>
+      <ion-option value="OUTRO">Outro</ion-option>
     </ion-select>
   </ion-item>
 
   <h3 class="titulo-secundario">Informe a descrição</h3>
 
-  <form class="detalhes-form">
-    <ion-item class="detalhes-item">
-      <ion-label class="texto-descricao" stacked>Descrição</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-  </form>
+  <ion-item class="detalhes-item">
+    <ion-label class="texto-descricao" stacked>Descrição</ion-label>
+    <ion-input [(ngModel)]="descricao" type="text"></ion-input>
+  </ion-item>
 
   <button class="botao-avancar" ion-button block (click)='adicionarOcorrencia();'>Concluir</button>
 

@@ -14,8 +14,9 @@ import { FormularioSucessoPage } from '../formulario-sucesso/formulario-sucesso'
 export class FormularioPage {
   private foto: string;
   private url = "http://10.1.1.15:9000/ocorrencia";
-  private tipoDeOcorrencia: string = 'outro';
+  private tipoDeOcorrencia: string = '';
   private localDaFoto: any;
+  private descricao = '';
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -38,15 +39,19 @@ export class FormularioPage {
   }
 
   private criarOcorrencia(){
+    console.log(Date.now());
     return {
     "imagem":this.foto,
     "tipoDaOcorrencia": this.tipoDeOcorrencia,
-    "horaDoRegistro": Date.now(),
+    "horaDoRegistro": "2076-12-16T14:34:55",
     "localizacao":{
         "latitude": GeolocalizacaoServico.latitude,
         "longitude": GeolocalizacaoServico.longitude
       },
-    "nomeDoUsuario": "FULANO"
+    "nomeDoUsuario": "FULANO",
+    "descricao": this.descricao
     }
   }
+
+
 }
