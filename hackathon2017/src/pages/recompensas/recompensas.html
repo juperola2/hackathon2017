@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar [hideBackButton]="true">
     <ion-title>Recompensas</ion-title>
   </ion-navbar>
 
@@ -16,21 +16,28 @@
 <ion-content class="pagina-inicial" padding>
   <div class="container-botao">
     <button class="botao-pagina-inicial" ion-button>
-      <ion-icon class="icone-botao" name="logo-usd" item-start></ion-icon>
-      Você possui<br> {{totalDePontos}} pontos.
+      <ion-icon class="icone-botao-2" color="light" name="ios-podium-outline"></ion-icon>
+      <h2 class="titulo-secundario-botao">
+        Você possui
+        <br> 15 pontos.
+      </h2>
     </button>
   </div>
 
   <h3 class="titulo-secundario">
-      Ocorrências
+    Ocorrências
   </h3>
 
   <ion-list class="lista-de-registros">
-      <ion-item class="listra-de-registros__registro" *ngFor="let ocorrencia of ocorrenciasResolvidas" (click)="verOsDetalhesDaOcorrencia(ocorrencia)">
-          <ion-icon name="{{ocorrencia.icone}}" color="danger" item-start ></ion-icon>
-        {{ocorrencia.tipoDaOcorrencia}} <br> {{ocorrencia.pontos}} pontos
-        <ion-icon name="ios-checkmark-circle-outline" color="primary"></ion-icon>
-      </ion-item>
+    <ion-item class="listra-de-registros__registro" *ngFor="let ocorrencia of ocorrenciasResolvidas" (click)="verOsDetalhesDaOcorrencia(ocorrencia)">
+      <ion-icon name="{{ocorrencia.icone}}" color="danger" item-start></ion-icon>
+      {{ocorrencia.tipoDaOcorrencia}}
+      <br> {{ocorrencia.pontos}} pontos
+      <ion-icon name="ios-checkmark-circle-outline" color="primary"></ion-icon>
+    </ion-item>
   </ion-list>
+
+  <h2 class="titulo-destaque">Seus pontos geram dinheiro!</h2>
+  <p>Quanto mais você contribui para o bem do trânsito e da sociedade, mais você ganha descontos.</p>
 
 </ion-content>

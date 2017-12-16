@@ -1,3 +1,12 @@
 page-menu {
-
+    .icone-lista {
+        font-size: 40px; 
+        margin-right: 10px;
+    }
+    .texto-lista {
+        position: relative;
+        bottom: 8px;
+        color: $dark;
+        font-size: 20px;
+    }
 }

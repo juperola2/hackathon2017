@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar [hideBackButton]="true">
     <ion-title>Menu</ion-title>
   </ion-navbar>
 
@@ -17,17 +17,20 @@
 
   <ion-list>
     <ion-item (click)="irParaOMapa()">
-      <ion-icon name="ios-map-outline"></ion-icon> Mapa
+      <ion-icon class="icone-lista" color="primary" name="ios-map-outline"></ion-icon>
+      <span class="texto-lista">Mapa de ocorrências</span>
     </ion-item>
-    
+
     <ion-item (click)="irParaRecompensas()">
-      <ion-icon name="logo-usd"></ion-icon> Recompensas
+      <ion-icon class="icone-lista" color="primary" name="ios-podium-outline"></ion-icon>
+      <span class="texto-lista">Recompensas</span>
     </ion-item>
 
     <ion-item (click)="irParaUsuario()">
-      <ion-icon name="ios-contact-outline"></ion-icon> Meu perfil
+      <ion-icon class="icone-lista" color="primary" name="ios-contact-outline"></ion-icon>
+      <span class="texto-lista">Meu perfil</span>
     </ion-item>
 
   </ion-list>
-        
+
 </ion-content>
