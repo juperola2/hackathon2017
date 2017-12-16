@@ -15,6 +15,9 @@ export class MapaDeOcorrenciasPage {
   public ocorrencias = [];
   public marcador : any;
   public marcadores = [];
+  public start = 'campo grande, ms';
+  public end = 'campo grande, ms';
+  public rotas = "WALKING";
 
 
   @ViewChild('map') mapElement: ElementRef;
@@ -36,19 +39,25 @@ export class MapaDeOcorrenciasPage {
   }
 
   colocarMarcador( ocorrencia, infowindow ) {
-
-
     var latLng = new google.maps.LatLng(ocorrencia['latitude'] , ocorrencia['longitude']);
-    var marcador = new google.maps.Marker({
+
+    var configMarcador = {
       position : latLng,
       map      : this.map
-    });
+    }
+
+    if (ocorrencia['status'] == 'RESOLVIDA') {
+      //configMarcador['icon'] = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
+    }
+    var marcador = new google.maps.Marker(configMarcador);
     marcador['ocorrencia'] = ocorrencia;
-    google.maps.event.addListener(marcador, 'click', function(){
+    google.maps.event.addListener(marcador, 'click', () => {
         infowindow.close(); // fechar a aberta
         infowindow.setContent( '<div><strong>'+ marcador['ocorrencia']['tipoDaOcorrencia']+'</strong><br>'+
         marcador['ocorrencia']['data'] + ' <quad>  ' + marcador['ocorrencia']['horario'] +'<br><strong>' + marcador['ocorrencia']['status']+'</strong></div>');
         infowindow.open(this.map, marcador);
+        this.end = marcador['ocorrencia']['latitude'].toString() + ', '+ marcador['ocorrencia']['longitude'].toString();
+        this.calcularRota(this.rotas);
     });
   }
 
@@ -71,7 +80,7 @@ export class MapaDeOcorrenciasPage {
   }
 
   configurarLocalAtual(infowindow) {
-
+    this.start = GeolocalizacaoServico.latitude.toString()+', '+ GeolocalizacaoServico.longitude.toString();
     var posicao = new google.maps.LatLng(GeolocalizacaoServico.latitude, GeolocalizacaoServico.longitude);
     this.marcador = new google.maps.Marker({position: posicao, title: 'Meu local', icon: {
       path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
@@ -85,6 +94,21 @@ export class MapaDeOcorrenciasPage {
     google.maps.event.addListener(this.marcador, 'click', function() {
       infowindow.setContent('<div><strong>Meu local</strong></div>');
       infowindow.open(this.map, this);
+    });
+  }
+
+  public calcularRota(rotas) {
+    this.rotas = rotas;
+    this.directionsService.route({
+      origin: this.start,
+      destination: this.end,
+      travelMode: rotas
+    }, (response, status) => {
+      if (status === 'OK') {
+        this.directionsDisplay.setDirections(response);
+      } else {
+        window.alert('Directions request failed due to ' + status);
+      }
     });
   }
 

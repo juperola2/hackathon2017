@@ -14,5 +14,14 @@
 
 
 <ion-content>
+    <div id="floating-panel">
+        <b>Tipos de rotas: </b><br>
+        <select id="mode" [(ngModel)]="rotas" (change)="calcularRota(rotas)">
+          <option value="DRIVING">Carro</option>
+          <option value="WALKING">A pé</option>
+          <option value="BICYCLING">Bicicleta</option>
+          <option value="TRANSIT">Transporte público</option>
+        </select>
+        </div>
   <div #map id="map"></div>
 </ion-content>
