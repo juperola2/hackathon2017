@@ -15,7 +15,7 @@ export class HomePage {
   private foto: string;
   private localAtual: any;
   private url = "http://10.1.1.15:9000/ocorrencia";
-
+  private self = this;
   public listaDeOcorrencias;
 
   private res = [
@@ -87,14 +87,29 @@ export class HomePage {
   }
 
   public obterFoto() {
+    let self = this;
     this.camera.getPicture(this.opcoesCamera).then((imageData) => {
-      this.foto = 'data:image/jpeg;base64,' + imageData;
-      this.navCtrl.push(FormularioPage, {foto: this.foto, localSelecionado: this.localAtual});
+      let salvarLocais = function(locais) {
+        self.foto = 'data:image/jpeg;base64,' + imageData;
+        self.navCtrl.push(FormularioPage, {foto: self.foto, localSelecionado: self.localAtual});
+      }
+      self.geolocalizacao.obterLocais(salvarLocais);
+      
     }, (err) => {
       console.log(err);
     });
   }
 
+  public irParaFormulario() {
+    let self = this;
+    let salvarLocais = function(locais) {
+      self.localAtual = locais[1];
+      console.log(self.localAtual);
+      console.log(locais);
+      self.navCtrl.push(FormularioPage, {foto: self.foto, localSelecionado: self.localAtual});
+    }
+    this.geolocalizacao.obterLocais(salvarLocais);
+  }
 
 
   /*
@@ -154,17 +169,6 @@ export class HomePage {
     } else{
       return 'Outro'
     }
-  }
-
-  public irParaFormulario() {
-    let self = this;
-    let salvarLocais = function(locais) {
-      self.localAtual = locais[1];
-      console.log(self.localAtual);
-      console.log(locais.results);
-      self.navCtrl.push(FormularioPage, {foto: self.foto, localSelecionado: self.localAtual});
-    }
-    this.geolocalizacao.obterLocais(salvarLocais);
   }
 
   public verOsDetalhesDaOcorrencia(dados) {
