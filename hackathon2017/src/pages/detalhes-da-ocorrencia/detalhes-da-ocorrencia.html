@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar [hideBackButton]="true">
     <ion-title>Ocorrência</ion-title>
   </ion-navbar>
 
@@ -14,37 +14,37 @@
 
 
 <ion-content padding class="pagina-ocorrencia">
-    <div class="container-foto">
-      <img class="foto" [src]="foto" alt="Foto Transite" />
-    </div>
-  
-    
-    <ion-item>
-      <ion-label>Tipo</ion-label>
-      <ion-input [(ngModel)]="ocorrencia.tipoDaOcorrencia" disabled="true"></ion-input>
-    </ion-item>
+  <div class="container-foto">
+    <img class="foto" [src]="foto" alt="Foto Transite" />
+  </div>
 
-    <ion-item>
-        <ion-label>Status</ion-label>
-        <ion-input [(ngModel)]="ocorrencia.status" disabled="true"></ion-input>
-    </ion-item>
 
-    <ion-item>
-      <ion-label>Data</ion-label>
-      <ion-input [(ngModel)]="ocorrencia.data" disabled="true"></ion-input>
-    </ion-item>
+  <ion-item>
+    <ion-label color="primary" color="primary">Tipo</ion-label>
+    <ion-input [(ngModel)]="ocorrencia.tipoDaOcorrencia" disabled="true"></ion-input>
+  </ion-item>
 
-    <ion-item>
-      <ion-label>Horário</ion-label>
-      <ion-input [(ngModel)]="ocorrencia.horario" disabled="true"></ion-input>
-    </ion-item>
+  <ion-item>
+    <ion-label color="primary">Status</ion-label>
+    <ion-input [(ngModel)]="ocorrencia.status" disabled="true"></ion-input>
+  </ion-item>
 
-    <ion-item>
-      <ion-label>Descrição</ion-label>
-      <ion-input [(ngModel)]="ocorrencia.descricao" disabled="true"></ion-input>
-    </ion-item>
+  <ion-item>
+    <ion-label color="primary">Data</ion-label>
+    <ion-input [(ngModel)]="ocorrencia.data" disabled="true"></ion-input>
+  </ion-item>
 
-    
-    <div #map id="map"></div>
+  <ion-item>
+    <ion-label color="primary">Horário</ion-label>
+    <ion-input [(ngModel)]="ocorrencia.horario" disabled="true"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="primary">Descrição</ion-label>
+    <ion-input [(ngModel)]="ocorrencia.descricao" disabled="true"></ion-input>
+  </ion-item>
+
+
+  <div #map id="map"></div>
 
 </ion-content>
