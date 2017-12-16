@@ -14,7 +14,7 @@ export class GeolocalizacaoServico {
     locais = [];
 
     opcoes: {} = {
-        timeout: 9000,
+        timeout: 10000,
         enableHighAccuaracy: true
     };
 

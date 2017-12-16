@@ -17,6 +17,8 @@ export class LoadingUtil {
     }
 
     public fecharLoading() {
-        this.loading.dismiss();
+        this.loading.present().then(() => {
+            this.loading.dismiss();
+        });
     }
 }

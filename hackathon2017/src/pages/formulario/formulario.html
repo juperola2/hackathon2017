@@ -15,7 +15,8 @@
 
 <ion-content class="pagina-formulario" padding>
   <div class="container-foto">
-    <img class="foto" [src]="foto" alt="Foto Transite" />
+    <img class="foto" *ngIf="foto" [src]="foto" alt="Foto Transite" />
+    <img class="foto" *ngIf="!foto" src="http://img.olx.com.br/images/05/059704111784451.jpg" alt="Foto Transite" />
   </div>
   <div class="localizacao-container">
     <ion-icon class="icone-localizacao" name="pin" item-start large></ion-icon>

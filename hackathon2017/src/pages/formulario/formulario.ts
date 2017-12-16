@@ -26,13 +26,15 @@ export class FormularioPage {
     }
     
   ionViewDidLoad() {
-    this.foto = this.navParams.get("foto");
+    this.foto = this.navParams.get("foto") ? this.navParams.get("foto") : "";
     this.localDaFoto = this.navParams.get("localSelecionado");
   }
 
   public adicionarOcorrencia(){
     this.loadingUtil.ativarLoading("Adicionando ocorrencia");
-    this.http.post(this.url, this.criarOcorrencia()).subscribe(resposta => resposta.json());
+    let ocorrencia = this.criarOcorrencia();
+    console.log(ocorrencia);
+    this.http.post(this.url, ocorrencia);
     this.navCtrl.pop();
     this.navCtrl.push(FormularioSucessoPage);
     this.loadingUtil.fecharLoading();
