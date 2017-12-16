@@ -14,6 +14,7 @@ export class MapaDeOcorrenciasPage {
 
   public ocorrencias = [];
   public marcador : any;
+  public marcadores = [];
 
 
   @ViewChild('map') mapElement: ElementRef;
@@ -29,9 +30,26 @@ export class MapaDeOcorrenciasPage {
 
   ionViewDidLoad(){
     this.ocorrencias = this.navParams.get("ocorrencias");
-    this.iniciarMapa();
-    this.configurarLocalAtual();
+    let infowindow = this.iniciarMapa();
+    this.configurarLocalAtual(infowindow);
 
+  }
+
+  colocarMarcador( ocorrencia, infowindow ) {
+
+
+    var latLng = new google.maps.LatLng(ocorrencia['latitude'] , ocorrencia['longitude']);
+    var marcador = new google.maps.Marker({
+      position : latLng,
+      map      : this.map
+    });
+    marcador['ocorrencia'] = ocorrencia;
+    google.maps.event.addListener(marcador, 'click', function(){
+        infowindow.close(); // fechar a aberta
+        infowindow.setContent( '<div><strong>'+ marcador['ocorrencia']['tipoDaOcorrencia']+'</strong><br>'+
+        marcador['ocorrencia']['data'] + ' <quad>  ' + marcador['ocorrencia']['horario'] +'<br><strong>' + marcador['ocorrencia']['status']+'</strong></div>');
+        infowindow.open(this.map, marcador);
+    });
   }
 
   iniciarMapa() {
@@ -41,17 +59,18 @@ export class MapaDeOcorrenciasPage {
         center: {lat: this.ocorrencias[0]['latitude'], lng: this.ocorrencias[0]['longitude']}
       });
     }
+
+    var infowindow = new google.maps.InfoWindow();
+
     for(var i = 0; i < this.ocorrencias.length; i++) {
-      var posicao = new google.maps.LatLng(this.ocorrencias[i]['latitude'], this.ocorrencias[i]['longitude']);
-      var marcadorDoLocal = new google.maps.Marker({position: posicao, title: this.ocorrencias[i]['tipoDaOcorrencia']});
-      marcadorDoLocal.setMap(this.map);
+      this.colocarMarcador(this.ocorrencias[i], infowindow);
     }
   
     this.directionsDisplay.setMap(this.map);
+    return infowindow;
   }
 
-  configurarLocalAtual() {
-    this.geolocalizacao.obterLocalAtual();
+  configurarLocalAtual(infowindow) {
 
     var posicao = new google.maps.LatLng(GeolocalizacaoServico.latitude, GeolocalizacaoServico.longitude);
     this.marcador = new google.maps.Marker({position: posicao, title: 'Meu local', icon: {
@@ -62,6 +81,11 @@ export class MapaDeOcorrenciasPage {
     this.marcador.setMap(this.map);
     this.map.setCenter({lat: GeolocalizacaoServico.latitude, lng: GeolocalizacaoServico.longitude});
     console.log('lat', GeolocalizacaoServico.latitude);
+
+    google.maps.event.addListener(this.marcador, 'click', function() {
+      infowindow.setContent('<div><strong>Meu local</strong></div>');
+      infowindow.open(this.map, this);
+    });
   }
 
 }

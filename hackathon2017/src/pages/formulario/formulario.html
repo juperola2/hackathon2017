@@ -19,9 +19,9 @@
   </div>
   <div class="localizacao-container">
     <ion-icon class="icone-localizacao" name="pin" item-start large></ion-icon>
-    <div class="formulario-localizacao">
-      <h2 *ngIf="localDaFoto">{{localDaFoto.name}}</h2>
-      <p *ngIf="localDaFoto">{{localDaFoto.vicinity}}</p>
+    <div *ngIf="localDaFoto" class="formulario-localizacao">
+      <h2 >{{localDaFoto.name}}</h2>
+      <p>{{localDaFoto.vicinity}}</p>
     </div>
   </div>
   <h3 class="titulo-secundario">Escolha o tipo da ocorrência</h3>

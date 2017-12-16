@@ -47,7 +47,6 @@ export class GeolocalizacaoServico {
             .get(this.urlGoogleApi + "&location=" + GeolocalizacaoServico.latitude + "," + GeolocalizacaoServico.longitude)
             .map(response => response.json())
             .subscribe(response => {
-                console.log(response.results);
                 callback(response.results);
             });
     }

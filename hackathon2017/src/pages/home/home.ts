@@ -55,11 +55,11 @@ export class HomePage {
         "tipoDaOcorrencia": "ESTACIONAMENTO_INDEVIDO",
         "horaDoRegistro": [
             2016,
-            1,
-            25,
-            21,
-            34,
-            55
+            12,
+            11,
+            7,
+            30,
+            0
         ],
         "localizacao": {
             "latitude": -20.4709232,
