@@ -45,25 +45,54 @@ page-formulario {
           padding: 0;
           margin: 0;
           font-size: 16px;
-          
         }
       }
     }
 
-    .ocorrencia-form {
-      border-radius: 5px !important;
+    .selecao-ocorrencia {
+      text-align: center;
+      padding: 12px;
       width: 100%;
+      border-radius: 10px;
+      border: 0 !important;  /*Removes border*/
+      -webkit-appearance: none;  /*Removes default chrome and safari style*/
+      -moz-appearance: none;  /*Removes default style Firefox*/
+      font-family: roboto;
+      font-weight: 300;
+      font-size: 20px;
+    }
+
+    .detalhes-form {
+      margin-top: 10px;
+
+      .detalhes-item {
+      }
+
+      .texto-descricao {
+      }
     }
 
     .titulo-secundario {
       font-weight: 400;
       text-align: left;
-      font-size: 14px;
-      padding-top: 16px; 
+      font-size: 14px; 
     }
 
     ion-select {
       width: 100%;;
+    }
+  }
+
+  .formulario-avancar {
+    height: 100px;
+    padding: 30px;
+    position: fixed;
+    bottom: 0;
+    button {
+      height: 60px;
+      font-size: 20px;
+      font-weight: 100;
+      text-transform: capitalize;
     }
   }
 }

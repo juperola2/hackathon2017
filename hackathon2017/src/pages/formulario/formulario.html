@@ -24,9 +24,12 @@
       <p *ngIf="localDaFoto">{{localDaFoto.vicinity}}</p>
     </div>
   </div>
-  <h3 class="titulo-secundario">Escolha o tipo de causa</h3>
+  <h3 class="titulo-secundario">Escolha o tipo da ocorrência</h3>
+
+
   <ion-item class="ocorrencia-form">
-    <ion-select [(ngModel)]="tipoDeOcorrencia">
+    <ion-label>Selecione</ion-label>
+    <ion-select [(ngModel)]="toppings" cancelText="Cancelar" okText="Continuar">
       <ion-option value="estacionamento">Estacionamento inapropriado</ion-option>
       <ion-option value="sinal">Ultrapassagem do sinaleiro</ion-option>
       <ion-option value="celular">Uso de celular dirigindo</ion-option>
@@ -37,12 +40,37 @@
 
   <h3 class="titulo-secundario">Informe a descrição</h3>
 
-  <form>
-    <ion-item>
-      <ion-label stacked>Descrição</ion-label>
+
+  <!-- <select class="selecao-ocorrencia" value="Selecione">
+    <option selected disabled hidden>Escolha o tipo de ocorrência</option>
+    <option value="estacionamento">Estacionamento inapropriado</option>
+    <option value="sinal">Ultrapassagem do sinaleiro</option>
+    <option value="celular">Uso de celular dirigindo</option>
+    <option value="acidente">Ocorrência de acidente</option>
+    <option value="outro">Outro</option>
+  </select> -->
+
+  <!-- <ion-item class="ocorrencia-form">
+    <ion-select [(ngModel)]="tipoDeOcorrencia">
+      <ion-option value="estacionamento">Estacionamento inapropriado</ion-option>
+      <ion-option value="sinal">Ultrapassagem do sinaleiro</ion-option>
+      <ion-option value="celular">Uso de celular dirigindo</ion-option>
+      <ion-option value="acidente">Ocorrência de acidente</ion-option>
+      <ion-option value="outro">Outro</ion-option>
+    </ion-select>
+  </ion-item> -->
+
+  <form class="detalhes-form">
+    <ion-item class="detalhes-item">
+      <ion-label class="texto-descricao" stacked>Descrição</ion-label>
       <ion-input type="text"></ion-input>
     </ion-item>
   </form>
 
-  <button ion-button outline block (click)='adicionarOcorrencia();'>Próximo</button>
+  <ion-footer>
+    <ion-toolbar class="formulario-avancar">
+      <button ion-button block (click)='adicionarOcorrencia();'>Próximo</button>
+    </ion-toolbar>
+  </ion-footer>
+
 </ion-content>
