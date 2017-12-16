@@ -71,7 +71,6 @@ export class MapaDeOcorrenciasPage {
   }
 
   configurarLocalAtual(infowindow) {
-    this.geolocalizacao.obterLocalAtual();
 
     var posicao = new google.maps.LatLng(GeolocalizacaoServico.latitude, GeolocalizacaoServico.longitude);
     this.marcador = new google.maps.Marker({position: posicao, title: 'Meu local', icon: {
