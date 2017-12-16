@@ -4,15 +4,19 @@ page-home {
     .navegacao-principal {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      align-items: flex-end;
+      justify-content: flex-end;
       background: $primary;
       box-shadow: none;
-      height: auto;
+      height: 100px;
+      .menu-principal {
+        margin: 16px;
+      }
       .logo-principal {
+        position: absolute;
+        top: 20px;
+        left: 10px;
         height: 80px;
-        margin: 0 auto;
-        vertical-align: center;
       }
     }
   }  
