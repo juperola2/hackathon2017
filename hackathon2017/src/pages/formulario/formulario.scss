@@ -24,7 +24,7 @@ page-formulario {
       height: 100px;
       .icone-localizacao{
         font-size: 40px;
-        color: $secondary;
+        color: $primary;
         margin-left: 14px;
       }
       .formulario-localizacao {
@@ -49,9 +49,8 @@ page-formulario {
       }
     }
 
-    .selecao-ocorrencia {
-      text-align: center;
-      padding: 12px;
+    .ocorrencia-form {
+      padding: 4px 16px;
       width: 100%;
       border-radius: 10px;
       border: 0 !important;  /*Removes border*/

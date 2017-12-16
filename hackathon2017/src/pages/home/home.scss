@@ -32,12 +32,12 @@ page-home {
         text-align: center;
         height: 240px;
         border-radius: 50%;
-        background: $primary;
+        background-image: $primary-degrade;
         line-height: 28px;
         text-transform: capitalize;
         box-shadow: none;
         &:hover {
-          background: lighten($primary, 5%);
+          opacity: 0.85;
         }
         .texto-botao {
           font-weight: 100;
@@ -60,6 +60,13 @@ page-home {
       .lista-de-registros__registro {
         border: 0 !important;
         background: transparent;
+        .icone-buttom {
+          position: absolute;
+          right: 0;
+          margin: auto 0;
+          background: $light;
+          padding: 10px
+        }
       }
     }
     
