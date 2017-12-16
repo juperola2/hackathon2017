@@ -1,0 +1,36 @@
+<!--
+  Generated template for the RecompensasPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Recompensas</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="pagina-inicial" padding>
+  <div class="container-botao">
+    <button class="botao-pagina-inicial" ion-button>
+      <ion-icon class="icone-botao" name="logo-usd" item-start></ion-icon>
+      Você possui<br> {{totalDePontos}} pontos.
+    </button>
+  </div>
+
+  <h3 class="titulo-secundario">
+      Ocorrências
+  </h3>
+
+  <ion-list class="lista-de-registros">
+      <ion-item class="listra-de-registros__registro" *ngFor="let ocorrencia of ocorrenciasResolvidas" (click)="verOsDetalhesDaOcorrencia(ocorrencia)">
+          <ion-icon name="{{ocorrencia.icone}}" color="danger" item-start ></ion-icon>
+        {{ocorrencia.tipoDaOcorrencia}} <br> {{ocorrencia.pontos}} pontos
+        <ion-icon name="ios-checkmark-circle-outline" color="primary"></ion-icon>
+      </ion-item>
+  </ion-list>
+
+</ion-content>

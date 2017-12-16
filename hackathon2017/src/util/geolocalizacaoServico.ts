@@ -52,6 +52,15 @@ export class GeolocalizacaoServico {
             });
     }
 
+    obterLocalAtual() {
+        this.geolocation.getCurrentPosition().then((posicao) => {    
+            GeolocalizacaoServico.latitude = posicao.coords.latitude;
+            GeolocalizacaoServico.longitude = posicao.coords.longitude;
+        }).catch((error) => {
+        console.log('Erro para obter localização.', error);
+        });
+    }
+
     obterLocaisParaAvaliacao(){
         return this.http
             .get(this.urlGoogleApi + "&location=" + GeolocalizacaoServico.latitude + "," + GeolocalizacaoServico.longitude)

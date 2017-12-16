@@ -6,6 +6,11 @@ import {DetalhesDaOcorrenciaPage} from '../detalhes-da-ocorrencia/detalhes-da-oc
 import { Http } from '@angular/http';
 import { LoadingUtil } from '../../util/loadingUtil';
 import { GeolocalizacaoServico } from '../../util/geolocalizacaoServico';
+import { MapaPage } from '../mapa/mapa';
+import {MapaDeOcorrenciasPage} from '../mapa-de-ocorrencias/mapa-de-ocorrencias'
+import { MenuController } from 'ionic-angular';
+import { RecompensasPage } from '../recompensas/recompensas';
+import { UsuarioPage } from '../usuario/usuario';
 
 @Component({
   selector: 'page-home',
@@ -34,11 +39,13 @@ export class HomePage {
             55
         ],
         "localizacao": {
-            "latitude": 12.1,
-            "longitude": 32.23
+            "latitude": -20.46818922,
+            "longitude": -54.61692095
         },
         "nomeDoUsuario": "FULANO",
-        "descricao": null
+        "descricao": null,
+        "status": "RESOLVIDA",
+        "pontos": 15
     },
     {
         "registroDaOcorrencia": {
@@ -55,11 +62,13 @@ export class HomePage {
             55
         ],
         "localizacao": {
-            "latitude": -20,
-            "longitude": -54
+            "latitude": -20.4709232,
+            "longitude": -54.61717844
         },
         "nomeDoUsuario": "FULANO",
-        "descricao": null
+        "descricao": null,
+        "status" : "ABERTA",
+        "pontos" : 10
     }
  ];
 
@@ -75,6 +84,7 @@ export class HomePage {
     private camera: Camera,
     public http: Http,
     private geolocalizacao: GeolocalizacaoServico,
+    public menuCtrl: MenuController,
     public loadingUtil: LoadingUtil) {
   }
 
@@ -84,6 +94,10 @@ export class HomePage {
 
   ionViewDidLoad(){
     this.geolocalizacao.ativarEspiao();
+  }
+
+  public openMenu() {
+    this.menuCtrl.open();
   }
 
   public obterFoto() {
@@ -105,12 +119,29 @@ export class HomePage {
     let salvarLocais = function(locais) {
       self.localAtual = locais[1];
       console.log(self.localAtual);
-      console.log(locais);
       self.navCtrl.push(FormularioPage, {foto: self.foto, localSelecionado: self.localAtual});
     }
     this.geolocalizacao.obterLocais(salvarLocais);
   }
 
+  public irParaRecompensas() {
+    var ocorrenciasResolvidas = [];
+    for (var i=0; i< this.listaDeOcorrencias.length; i++) {
+      if(this.listaDeOcorrencias[i]['status'] == 'RESOLVIDA'){
+        ocorrenciasResolvidas.push(this.listaDeOcorrencias[i]);
+      }
+    }
+    console.log('res', ocorrenciasResolvidas);
+    this.navCtrl.push(RecompensasPage, {ocorrenciasResolvidas: ocorrenciasResolvidas});
+  }
+
+  public irParaOMapa() {
+    this.navCtrl.push(MapaDeOcorrenciasPage, {ocorrencias: this.listaDeOcorrencias});
+  }
+
+  public irParaUsuario() {
+    this.navCtrl.push(UsuarioPage);
+  }
 
   /*
   public carregarOcorrencias(){
@@ -149,7 +180,11 @@ export class HomePage {
         foto: dados[i]['registroDaOcorrencia']['dados'],
         data : dados[i]['horaDoRegistro'][2] + '/' + dados[i]['horaDoRegistro'][1] + '/' + dados[i]['horaDoRegistro'][0],
         horario: dados[i]['horaDoRegistro'][3] +':'+ dados[i]['horaDoRegistro'][3] +':' + dados[i]['horaDoRegistro'][4],
-        descricao: dados[i]['descricao']
+        descricao: dados[i]['descricao'],
+        latitude: dados[i]['localizacao']['latitude'],
+        longitude: dados[i]['localizacao']['longitude'],
+        status: dados[i]['status'],
+        pontos: dados[i]['pontos']
       }
       dadosParseados.push(dado);
     }

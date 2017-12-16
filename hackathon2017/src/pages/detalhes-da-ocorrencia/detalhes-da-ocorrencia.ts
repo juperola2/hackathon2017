@@ -1,12 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the DetalhesDaOcorrenciaPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+declare var google;
 
 @IonicPage()
 @Component({
@@ -17,6 +12,14 @@ export class DetalhesDaOcorrenciaPage {
   private foto: string;
   public ocorrencia = {};
 
+  @ViewChild('map') mapElement: ElementRef;
+  map: any;
+  start = 'chicago, il';
+  end = 'chicago, il';
+  directionsService = new google.maps.DirectionsService;
+  directionsDisplay = new google.maps.DirectionsRenderer;
+
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -24,6 +27,20 @@ export class DetalhesDaOcorrenciaPage {
     this.ocorrencia = this.navParams.get("ocorrencia");
     this.foto = this.ocorrencia['foto'];
     console.log('detalhes', this.ocorrencia);
+    this.iniciarMapa(this.ocorrencia['latitude'], this.ocorrencia['longitude']);
+  }
+
+  iniciarMapa(latitude, longitude) {
+    this.map = new google.maps.Map(this.mapElement.nativeElement, {
+      zoom: 16,
+      center: {lat: latitude, lng: longitude}
+    });
+
+    var posicao = new google.maps.LatLng(latitude, longitude);
+    var marcadorDoLocal = new google.maps.Marker({position: posicao, title: 'Local da ocorrência'});
+    marcadorDoLocal.setMap(this.map);
+
+    this.directionsDisplay.setMap(this.map);
   }
 
 

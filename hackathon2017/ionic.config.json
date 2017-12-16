@@ -2,6 +2,12 @@
   "name": "hackathon2017",
   "app_id": "",
   "type": "ionic-angular",
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "http://cors.api.com/api"
+    }
+  ],
   "integrations": {
     "cordova": {}
   }

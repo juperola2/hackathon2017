@@ -14,6 +14,10 @@ import { FormularioSucessoPage } from '../pages/formulario-sucesso/formulario-su
 import { DetalhesDaOcorrenciaPage } from '../pages/detalhes-da-ocorrencia/detalhes-da-ocorrencia';
 import { GeolocalizacaoServico } from '../../src/util/geolocalizacaoServico';
 import { Geolocation } from '@ionic-native/geolocation';
+import { MapaPage } from '../pages/mapa/mapa';
+import {MapaDeOcorrenciasPage} from '../pages/mapa-de-ocorrencias/mapa-de-ocorrencias';
+import { RecompensasPage } from '../pages/recompensas/recompensas';
+import { UsuarioPage } from '../pages/usuario/usuario';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,11 @@ import { Geolocation } from '@ionic-native/geolocation';
     HomePage,
     FormularioPage,
     FormularioSucessoPage,
-    DetalhesDaOcorrenciaPage
+    DetalhesDaOcorrenciaPage,
+    MapaPage,
+    MapaDeOcorrenciasPage,
+    RecompensasPage,
+    UsuarioPage
   ],
   imports: [
     BrowserModule,
@@ -34,7 +42,11 @@ import { Geolocation } from '@ionic-native/geolocation';
     HomePage,
     FormularioPage,
     FormularioSucessoPage,
-    DetalhesDaOcorrenciaPage
+    DetalhesDaOcorrenciaPage,
+    MapaPage,
+    MapaDeOcorrenciasPage,
+    RecompensasPage,
+    UsuarioPage
   ],
   providers: [
     StatusBar,

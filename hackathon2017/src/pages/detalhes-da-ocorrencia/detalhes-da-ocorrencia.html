@@ -23,6 +23,11 @@
     </ion-item>
 
     <ion-item>
+        <ion-label>Status</ion-label>
+        <ion-input [(ngModel)]="ocorrencia.status" disabled="true"></ion-input>
+    </ion-item>
+
+    <ion-item>
       <ion-label>Data</ion-label>
       <ion-input [(ngModel)]="ocorrencia.data" disabled="true"></ion-input>
     </ion-item>
@@ -36,6 +41,9 @@
       <ion-label>Descrição</ion-label>
       <ion-input [(ngModel)]="ocorrencia.descricao" disabled="true"></ion-input>
     </ion-item>
+
+    
+    <div #map id="map"></div>
       
 
 </ion-content>

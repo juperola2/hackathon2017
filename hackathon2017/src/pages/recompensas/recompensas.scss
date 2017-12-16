@@ -1,0 +1,45 @@
+page-recompensas {
+
+    .pagina-inicial {
+        background: $light;
+        font-family: roboto;
+        overflow: hidden;
+        font-weight: 300;
+        .container-botao { 
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          .botao-pagina-inicial {
+            width: 240px;
+            text-align: center;
+            height: 240px;
+            border-radius: 50%;
+            font-size: 24px;
+            background: $primary;
+            color: $light;
+            font-weight: 100;
+            line-height: 28px;
+            text-transform: capitalize;
+            box-shadow: none;
+            &:hover {
+              background: lighten($primary, 5%);
+            }
+            .icone-botao {
+              position: absolute;
+              top: 32px;
+              font-size: 60px;
+              color: $light;
+            }
+        }
+      }
+    }
+
+    .titulo-secundario {
+        font-weight: 400;
+        text-align: center;
+        font-size: 14px;
+        padding-top: 16px; 
+      }
+
+}

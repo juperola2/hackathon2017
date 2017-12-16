@@ -1,7 +1,11 @@
 <ion-header class="cabecalho-principal">
+  <button ion-button menuToggle>
+    <ion-icon name="ios-list-outline"></ion-icon>
+  </button>
   <ion-navbar class="navegacao-principal">
     <img class="logo-principal" src="./assets/imgs/logo-transite.png" alt="Transite">
   </ion-navbar>
+
 </ion-header>
 
 
@@ -18,13 +22,41 @@
     Últimos registros
   </h3>
 
+  
+
   <ion-list class="lista-de-registros">
       <ion-item class="listra-de-registros__registro" *ngFor="let ocorrencia of listaDeOcorrencias" (click)="verOsDetalhesDaOcorrencia(ocorrencia)">
           <ion-icon name="{{ocorrencia.icone}}" color="danger" item-start ></ion-icon>
         {{ocorrencia.tipoDaOcorrencia}} <br> {{ocorrencia.data}}  {{ocorrencia.horario}}
       </ion-item>
   </ion-list>
+ 
+  <ion-menu [content]="mycontent">
+    <ion-content>
+      <ion-list>
+        <ion-item (click)="irParaOMapa()">
+          <ion-icon name="ios-map-outline"></ion-icon> Mapa
+        </ion-item>
+        
+        <ion-item (click)="irParaRecompensas()">
+          <ion-icon name="logo-usd"></ion-icon> Recompensas
+        </ion-item>
+
+        <ion-item (click)="irParaUsuario()">
+          <ion-icon name="ios-contact-outline"></ion-icon> Meu perfil
+        </ion-item>
+
+        <ion-item>
+          <ion-icon name="ios-help-circle-outline"></ion-icon> Ajuda
+        </ion-item>
+        <ion-item menuClose detail-none> Fechar</ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <ion-nav #mycontent [root]="rootPage"></ion-nav>
 
   <button ion-button (click)="irParaFormulario()" outline>Formulário</button>
+  <button ion-button (click)="irParaOMapa()" outline>Mapa</button>
 
 </ion-content>
