@@ -6,11 +6,11 @@ import {DetalhesDaOcorrenciaPage} from '../detalhes-da-ocorrencia/detalhes-da-oc
 import { Http } from '@angular/http';
 import { LoadingUtil } from '../../util/loadingUtil';
 import { GeolocalizacaoServico } from '../../util/geolocalizacaoServico';
-import { MapaPage } from '../mapa/mapa';
-import {MapaDeOcorrenciasPage} from '../mapa-de-ocorrencias/mapa-de-ocorrencias'
+import {MapaDeOcorrenciasPage} from '../mapa-de-ocorrencias/mapa-de-ocorrencias';
 import { MenuController } from 'ionic-angular';
 import { RecompensasPage } from '../recompensas/recompensas';
 import { UsuarioPage } from '../usuario/usuario';
+import { MenuPage } from '../menu/menu';
 
 @Component({
   selector: 'page-home',
@@ -93,11 +93,12 @@ export class HomePage {
   }
 
   ionViewDidLoad(){
+    this.carregarOcorrencias();
     this.geolocalizacao.ativarEspiao();
   }
 
-  public openMenu() {
-    this.menuCtrl.open();
+  public irParaMenu() {
+    this.navCtrl.push(MenuPage, {ocorrencias: this.listaDeOcorrencias});
   }
 
   public obterFoto() {
@@ -124,24 +125,10 @@ export class HomePage {
     this.geolocalizacao.obterLocais(salvarLocais);
   }
 
-  public irParaRecompensas() {
-    var ocorrenciasResolvidas = [];
-    for (var i=0; i< this.listaDeOcorrencias.length; i++) {
-      if(this.listaDeOcorrencias[i]['status'] == 'RESOLVIDA'){
-        ocorrenciasResolvidas.push(this.listaDeOcorrencias[i]);
-      }
-    }
-    console.log('res', ocorrenciasResolvidas);
-    this.navCtrl.push(RecompensasPage, {ocorrenciasResolvidas: ocorrenciasResolvidas});
-  }
-
   public irParaOMapa() {
     this.navCtrl.push(MapaDeOcorrenciasPage, {ocorrencias: this.listaDeOcorrencias});
   }
 
-  public irParaUsuario() {
-    this.navCtrl.push(UsuarioPage);
-  }
 
   /*
   public carregarOcorrencias(){

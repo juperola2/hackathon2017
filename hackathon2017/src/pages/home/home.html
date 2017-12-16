@@ -1,6 +1,6 @@
 <ion-header class="cabecalho-principal">
 
-  <button ion-button menuToggle>
+  <button ion-button (click)="irParaMenu()">
     <ion-icon name="ios-list-outline"></ion-icon>
   </button>
 
@@ -21,11 +21,10 @@
         <br>Ocorrência</span>
     </button>
   </div>
+
   <h3 class="titulo-secundario">
     Últimos registros
   </h3>
-
-  
 
   <ion-list class="lista-de-registros">
     <ion-item class="lista-de-registros__registro" *ngFor="let ocorrencia of listaDeOcorrencias" (click)="verOsDetalhesDaOcorrencia(ocorrencia)">
@@ -36,31 +35,6 @@
     </ion-item>
   </ion-list>
  
-  <ion-menu [content]="mycontent">
-    <ion-content>
-      <ion-list>
-        <ion-item (click)="irParaOMapa()">
-          <ion-icon name="ios-map-outline"></ion-icon> Mapa
-        </ion-item>
-        
-        <ion-item (click)="irParaRecompensas()">
-          <ion-icon name="logo-usd"></ion-icon> Recompensas
-        </ion-item>
-
-        <ion-item (click)="irParaUsuario()">
-          <ion-icon name="ios-contact-outline"></ion-icon> Meu perfil
-        </ion-item>
-
-        <ion-item>
-          <ion-icon name="ios-help-circle-outline"></ion-icon> Ajuda
-        </ion-item>
-        <ion-item menuClose detail-none> Fechar</ion-item>
-      </ion-list>
-    </ion-content>
-  </ion-menu>
-
-  <ion-nav #mycontent [root]="rootPage"></ion-nav>
-
   <button ion-button (click)="irParaFormulario()" outline>Formulário</button>
   <button ion-button (click)="irParaOMapa()" outline>Mapa</button>
 

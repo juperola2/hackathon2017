@@ -18,6 +18,7 @@ import { MapaPage } from '../pages/mapa/mapa';
 import {MapaDeOcorrenciasPage} from '../pages/mapa-de-ocorrencias/mapa-de-ocorrencias';
 import { RecompensasPage } from '../pages/recompensas/recompensas';
 import { UsuarioPage } from '../pages/usuario/usuario';
+import { MenuPage } from '../pages/menu/menu';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { UsuarioPage } from '../pages/usuario/usuario';
     MapaPage,
     MapaDeOcorrenciasPage,
     RecompensasPage,
-    UsuarioPage
+    UsuarioPage,
+    MenuPage
   ],
   imports: [
     BrowserModule,
@@ -46,7 +48,8 @@ import { UsuarioPage } from '../pages/usuario/usuario';
     MapaPage,
     MapaDeOcorrenciasPage,
     RecompensasPage,
-    UsuarioPage
+    UsuarioPage,
+    MenuPage
   ],
   providers: [
     StatusBar,
