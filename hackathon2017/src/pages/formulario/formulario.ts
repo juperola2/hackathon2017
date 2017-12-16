@@ -13,7 +13,7 @@ import { FormularioSucessoPage } from '../formulario-sucesso/formulario-sucesso'
 })
 export class FormularioPage {
   private foto: string;
-  private url = "http://10.1.1.20:9000/ocorrencia";
+  private url = "http://10.1.1.15:9000/ocorrencia";
   private tipoDeOcorrencia: string = 'outro';
   private localDaFoto: any;
 
