@@ -4,15 +4,23 @@ page-home {
     .navegacao-principal {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: $primary;
+      align-items: flex-end;
+      justify-content: flex-end;
       box-shadow: none;
-      height: auto;
+      height: 100px;
+      .toolbar-background.toolbar-background-ios{
+        background: white;
+      }
+      .menu-principal {
+        margin: 16px;
+        background: $light;
+        color: $dark;
+      }
       .logo-principal {
-        height: 80px;
-        margin: 0 auto;
-        vertical-align: center;
+        position: absolute;
+        top: 28px;
+        left: 10px;
+        width: 180px;
       }
     }
   }  
@@ -36,11 +44,13 @@ page-home {
         line-height: 28px;
         text-transform: capitalize;
         box-shadow: none;
+        box-shadow: 0px 8px 30px rgba(0,0,0,0.3);
         &:hover {
           opacity: 0.85;
         }
+
         .texto-botao {
-          font-weight: 100;
+          font-weight: 400;
           font-size: 24px;
           color: $light;
           position: relative;
@@ -65,16 +75,28 @@ page-home {
           right: 0;
           margin: auto 0;
           background: $light;
-          padding: 10px
+          padding: 10px;
+          color: $primary;
+        }
+        h4 {
+          color: $dark;
+          font-size: 16px;
+          font-weight: 300;
+        }
+        p {
+          color: $dark;
         }
       }
     }
     
     .titulo-secundario {
-      font-weight: 400;
-      text-align: center;
-      font-size: 14px;
+      font-weight: 300;
+      text-align: left;
+      font-size: 18px;
       padding-top: 16px; 
+      color: $dark;
+      border-bottom: 1px solid $primary;
+      padding-bottom: 10px;
     }
   }
 }

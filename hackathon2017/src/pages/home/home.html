@@ -1,11 +1,11 @@
 <ion-header class="cabecalho-principal">
 
-  <button ion-button (click)="irParaMenu()">
-    <ion-icon name="ios-list-outline"></ion-icon>
-  </button>
 
   <ion-navbar class="navegacao-principal" [hideBackButton]="true">
-    <img class="logo-principal" src="./assets/imgs/logo-transite.png" alt="Transite">
+    <img class="logo-principal" src="./assets/imgs/logo-transite.svg" alt="Transite">
+    <button class="menu-principal" ion-button color="light" (click)="irParaMenu()">
+      <ion-icon name="md-menu"></ion-icon>
+    </button>
   </ion-navbar>
 
 </ion-header>
@@ -34,7 +34,7 @@
       <p>{{ocorrencia.data}} {{ocorrencia.horario}}</p>
     </ion-item>
   </ion-list>
- 
+
   <button ion-button (click)="irParaFormulario()" outline>Formulário</button>
   <button ion-button (click)="irParaOMapa()" outline>Mapa</button>
 
