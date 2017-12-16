@@ -13,9 +13,11 @@
 </ion-header>
 
 
-<ion-content padding>
-    <img [src]="foto" />
-
+<ion-content padding class="pagina-ocorrencia">
+    <div class="container-foto">
+      <img class="foto" [src]="foto" alt="Foto Transite" />
+    </div>
+  
     
     <ion-item>
       <ion-label>Tipo</ion-label>
@@ -44,6 +46,5 @@
 
     
     <div #map id="map"></div>
-      
 
 </ion-content>

@@ -2,4 +2,22 @@ page-detalhes-da-ocorrencia {
     #map {
         height: 30%;
       }
+  .pagina-ocorrencia{
+    background: $light;
+    .container-foto {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: auto;
+      margin-bottom: 24px;
+      background: white;
+      .foto {
+        max-height: 200px;
+        min-height: auto;
+        min-width: auto;
+        max-width: 100%
+      }
+    }
+  }
 }

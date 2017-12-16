@@ -34,8 +34,8 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $primary: #53C34B ;
-$secondary: #2857EF;
-$terciary: #575551;
+$secondary: #46F6A0;
+$terciary: #56695F;
 $danger: #F43B3B;
 $sucess: $primary ;
 $light: #EBE7E8;
@@ -51,8 +51,9 @@ $colors: (
   light:      $light,
   dark:       $dark,
   attention:  $attention
-);
-
+  );
+  
+  $primary-degrade: linear-gradient(45deg, $primary 20%, $secondary 130%);
 
 // App iOS Variables
 // --------------------------------------------------

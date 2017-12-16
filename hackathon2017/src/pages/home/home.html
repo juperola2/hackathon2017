@@ -1,8 +1,10 @@
 <ion-header class="cabecalho-principal">
+
   <button ion-button menuToggle>
     <ion-icon name="ios-list-outline"></ion-icon>
   </button>
-  <ion-navbar class="navegacao-principal">
+
+  <ion-navbar class="navegacao-principal" [hideBackButton]="true">
     <img class="logo-principal" src="./assets/imgs/logo-transite.png" alt="Transite">
   </ion-navbar>
 
@@ -15,8 +17,9 @@
   <div class="container-botao">
     <button (click)="obterFoto()" class="botao-pagina-inicial" ion-button>
       <ion-icon class="icone-botao" name="ios-camera-outline" item-start></ion-icon>
-      Registrar
-      <br>Ocorrência</button>
+      <span class="texto-botao">Registrar
+        <br>Ocorrência</span>
+    </button>
   </div>
   <h3 class="titulo-secundario">
     Últimos registros
@@ -25,10 +28,12 @@
   
 
   <ion-list class="lista-de-registros">
-      <ion-item class="listra-de-registros__registro" *ngFor="let ocorrencia of listaDeOcorrencias" (click)="verOsDetalhesDaOcorrencia(ocorrencia)">
-          <ion-icon name="{{ocorrencia.icone}}" color="danger" item-start ></ion-icon>
-        {{ocorrencia.tipoDaOcorrencia}} <br> {{ocorrencia.data}}  {{ocorrencia.horario}}
-      </ion-item>
+    <ion-item class="lista-de-registros__registro" *ngFor="let ocorrencia of listaDeOcorrencias" (click)="verOsDetalhesDaOcorrencia(ocorrencia)">
+      <ion-icon name="{{ocorrencia.icone}}" color="danger" item-start></ion-icon>
+      <ion-icon class="icone-buttom" name="ios-arrow-dropright-outline" color="terciary" item-start></ion-icon>
+      <h4>{{ocorrencia.tipoDaOcorrencia}}</h4>
+      <p>{{ocorrencia.data}} {{ocorrencia.horario}}</p>
+    </ion-item>
   </ion-list>
  
   <ion-menu [content]="mycontent">

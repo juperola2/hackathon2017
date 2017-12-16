@@ -1,3 +1,34 @@
 page-formulario-sucesso {
-
+  .pagina-sucesso {
+    .logo-pagina-sucesso {
+      width: 200px;
+      position: absolute;
+      top: 32px;
+      left: 25%;
+    }
+    text-align: center;
+    background-image: $primary-degrade;
+    .icone-sucesso {
+      margin-top: 200px;
+      font-size: 100px;
+    }
+    h3 {
+      font-weight: 300;
+      margin-bottom: 30px;
+      color: $terciary;
+    }
+    .container-botao {
+      padding: 50px !important;
+      width: 100%;
+      height: 200px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 }

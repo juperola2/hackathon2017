@@ -24,9 +24,12 @@
       <p *ngIf="localDaFoto">{{localDaFoto.vicinity}}</p>
     </div>
   </div>
-  <h3 class="titulo-secundario">Escolha o tipo de causa</h3>
+  <h3 class="titulo-secundario">Escolha o tipo da ocorrência</h3>
+
+
   <ion-item class="ocorrencia-form">
-    <ion-select [(ngModel)]="tipoDeOcorrencia">
+    <ion-label>Selecione</ion-label>
+    <ion-select [(ngModel)]="toppings" cancelText="Cancelar" okText="Continuar">
       <ion-option value="estacionamento">Estacionamento inapropriado</ion-option>
       <ion-option value="sinal">Ultrapassagem do sinaleiro</ion-option>
       <ion-option value="celular">Uso de celular dirigindo</ion-option>
@@ -37,12 +40,17 @@
 
   <h3 class="titulo-secundario">Informe a descrição</h3>
 
-  <form>
-    <ion-item>
-      <ion-label stacked>Descrição</ion-label>
+  <form class="detalhes-form">
+    <ion-item class="detalhes-item">
+      <ion-label class="texto-descricao" stacked>Descrição</ion-label>
       <ion-input type="text"></ion-input>
     </ion-item>
   </form>
 
-  <button ion-button outline block (click)='adicionarOcorrencia();'>Próximo</button>
+  <ion-footer>
+    <ion-toolbar class="formulario-avancar">
+      <button ion-button block (click)='adicionarOcorrencia();'>Concluir</button>
+    </ion-toolbar>
+  </ion-footer>
+
 </ion-content>
