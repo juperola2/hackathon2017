@@ -6,8 +6,8 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>usuario</ion-title>
+  <ion-navbar [hideBackButton]="true">
+    <ion-title>Usuário</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,18 +15,17 @@
 
 <ion-content class="pagina-inicial" padding>
 
-    <div class="container-botao">
-      <button class="botao-pagina-inicial" ion-button>
-        <ion-icon class="icone-botao" name="ios-contact-outline" item-start></ion-icon>
+  <ion-icon class="icone-botao" name="ios-contact-outline" item-start></ion-icon>
 
-        Fulano
-      </button>
-    </div>
+  <h3 class="titulo-secundario">
+    Nome Usuario
+  </h3>
 
-    <ion-item>
-      <ion-label>Email</ion-label>
-      <ion-input value="fulano.gmail.com" disabled="true"></ion-input>
-    </ion-item>
 
-    
+  <ion-item>
+    <ion-label>Email</ion-label>
+    <ion-input value="usuario.gmail.com" disabled="true"></ion-input>
+  </ion-item>
+
+
 </ion-content>
